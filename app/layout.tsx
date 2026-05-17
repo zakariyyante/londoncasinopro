@@ -46,7 +46,7 @@ export default function RootLayout({
                 }
               };
               gtag('event', 'conversion', {
-                  'send_to': 'AW-18144075262/conversion',
+                  'send_to': 'AW-18144075262/aygMCIqW9KgcEP674stD',
                   'event_callback': callback
               });
               return false;
