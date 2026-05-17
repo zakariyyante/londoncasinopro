@@ -1,0 +1,16 @@
+<svg width="640" height="160" viewBox="0 0 640 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="160" fill="#0A0F29"/>
+  <path d="M60 30L100 42V74L60 94L20 74V42L60 30Z" fill="#5B18E8" />
+  <path d="M60 38L88 46V68L60 82L32 68V46L60 38Z" fill="#D8A326" />
+  <path d="M50 50V66H70" stroke="white" stroke-width="4" stroke-linecap="square" />
+  
+  <text x="120" y="85" font-family="Arial" font-weight="900" font-size="48">
+    <tspan fill="#5B18E8">LONDON</tspan>
+    <tspan fill="white" dx="5">CASINO</tspan>
+    <tspan fill="#D8A326" dx="5">PRO</tspan>
+  </text>
+  
+  <text x="120" y="115" font-family="Arial" font-weight="700" font-size="12" fill="white" fill-opacity="0.4" letter-spacing="0.4em">
+    PREMIUM COMPARISON HUB
+  </text>
+</svg>

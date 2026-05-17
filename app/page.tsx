@@ -1,65 +1,62 @@
-import Image from "next/image";
+import { brands } from "./data/brands";
+import { Hero } from "@/components/Hero";
+import { BrandCard } from "@/components/BrandCard";
+import { ComplianceBar } from "@/components/ComplianceBar";
+import { AboutSection } from "@/components/AboutSection";
+import { MobileModal } from "@/components/MobileModal";
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const params = await searchParams;
+  const gclid = typeof params.gclid === 'string' ? params.gclid : null;
+  
+  const mobileBrands = brands.filter(b => b.isMobile);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-[#0A0F29]">
+      {/* Mobile Popup Modal */}
+      <MobileModal brands={mobileBrands} gclid={gclid} />
+
+      <Hero />
+      
+      <section id="brands" className="py-8 md:py-20 relative overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-24 bg-linear-to-b from-[#050817] to-transparent opacity-20" />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex flex-col items-center mb-8 md:mb-16">
+            <h2 className="text-3xl md:text-6xl font-black text-white mb-2 md:mb-4 uppercase tracking-tighter text-center leading-none">
+              TOP RATED <span className="text-[#5B18E8]">UK CASINOS</span>
+            </h2>
+            <div className="flex items-center gap-4">
+              <div className="h-0.5 w-8 md:h-1 md:w-12 bg-[#D8A326]" />
+              <p className="text-white/60 font-black uppercase tracking-widest text-[10px] md:text-xs">Updated May 2026</p>
+              <div className="h-0.5 w-8 md:h-1 md:w-12 bg-[#D8A326]" />
+            </div>
+            <p className="hidden md:block text-[10px] font-bold text-white/20 uppercase tracking-widest mt-4 text-center">
+              londoncasinopro.com is published and operated by Michal Jan Muszynski. This platform is managed in connection with our commercial and affiliate partnerships, which are reflected in the content and offers on this domain.
+            </p>
+          </div>
+
+          {/* Vertically aligned cards (list layout) */}
+          <div className="grid grid-cols-1 gap-4 md:gap-8 max-w-6xl mx-auto">
+            {brands.map((brand) => (
+              <BrandCard 
+                key={brand.id} 
+                brand={brand} 
+                gclid={gclid}
+              />
+            ))}
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
+
+      <ComplianceBar />
+
+      <AboutSection />
     </div>
   );
 }

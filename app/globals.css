@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card-bg: var(--card-bg);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-navy: #050817;
+  --color-purple: #5B18E8;
+  --color-gold: #D8A326;
+  --color-offwhite: #F8F8F5;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #0A0F29; /* Deep London Blue */
+  --foreground: #F8F8F5;
+  --card-bg: #0D1433; /* Slightly lighter blue for cards */
+  --primary: #5B18E8;
+  --accent: #D8A326;
+  --navy: #050817;
+  --purple: #5B18E8;
+  --gold: #D8A326;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+}
+
+@layer utilities {
+  .neo-border {
+    border: 2px solid #050817;
+  }
+
+  .neo-shadow {
+    box-shadow: 6px 6px 0 #050817;
+  }
+
+  .neo-shadow-purple {
+    box-shadow: 6px 6px 0 #5B18E8;
+  }
+
+  .neo-shadow-gold {
+    box-shadow: 6px 6px 0 #D8A326;
+  }
+
+  .neo-shadow-sm {
+    box-shadow: 3px 3px 0 #050817;
+  }
+
+  .cut-corner {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+  }
+
+  .cut-corner-sm {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+  }
+
+  .cut-corner-inv {
+    clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px);
+  }
+
+  .gold-text {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-[#D8A326] via-[#F0B93A] to-[#D8A326];
+  }
+
+  .purple-gold-grad {
+    background: linear-gradient(135deg, #5B18E8 0%, #050817 55%, #D8A326 100%);
+  }
+
+  .heading-condensed {
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .geometric-divider {
+    height: 4px;
+    background: repeating-linear-gradient(
+      90deg,
+      #5B18E8,
+      #5B18E8 20px,
+      #D8A326 20px,
+      #D8A326 40px
+    );
+  }
 }
