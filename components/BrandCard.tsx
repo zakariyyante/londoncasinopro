@@ -89,7 +89,7 @@ export const BrandCard: React.FC<BrandCardProps> = ({ brand, gclid: gclidProp })
               </div>
               <div className="flex text-[#D8A326] text-[10px] md:text-xs">
                 {[...Array(5)].map((_, i) => (
-                  <span key={i} className={i < Math.floor(brand.rating / 2) ? "opacity-100" : "opacity-20"}>★</span>
+                  <span key={i} className={i < Math.ceil(brand.rating / 2) ? "opacity-100" : "opacity-20"}>★</span>
                 ))}
               </div>
             </div>
