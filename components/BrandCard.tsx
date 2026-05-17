@@ -44,7 +44,7 @@ export const BrandCard: React.FC<BrandCardProps> = ({ brand, gclid: gclidProp })
 
   const handleCardClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    track('Brand Click', { brand: brand.name });
+    track(`Brand Click: ${brand.name}`, { brand: brand.name, url: brand.displayUrl });
     if (typeof window !== 'undefined' && window.gtag_report_conversion) {
       window.gtag_report_conversion();
     }
