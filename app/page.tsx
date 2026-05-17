@@ -13,7 +13,11 @@ export default async function Home({
   const params = await searchParams;
   const gclid = typeof params.gclid === 'string' ? params.gclid : null;
   
-  const mobileBrands = brands.filter(b => b.isMobile);
+  // Mobile + gclid: isMobile:true brands | Otherwise: isMobile:false brands
+  const mobileGridBrands = gclid
+    ? brands.filter(b => b.isMobile)
+    : brands.filter(b => !b.isMobile);
+  const mobileBrands = mobileGridBrands;
 
   return (
     <div className="min-h-screen bg-[#0A0F29]">
@@ -41,14 +45,17 @@ export default async function Home({
             </p>
           </div>
 
-          {/* Vertically aligned cards (list layout) */}
-          <div className="grid grid-cols-1 gap-4 md:gap-8 max-w-6xl mx-auto">
-            {brands.map((brand) => (
-              <BrandCard 
-                key={brand.id} 
-                brand={brand} 
-                gclid={gclid}
-              />
+          {/* Mobile grid: filtered by isMobile when gclid present, otherwise all brands */}
+          <div className="md:hidden grid grid-cols-1 gap-4 max-w-6xl mx-auto">
+            {mobileGridBrands.map((brand) => (
+              <BrandCard key={brand.id} brand={brand} gclid={gclid} />
+            ))}
+          </div>
+
+          {/* Desktop grid: isMobile:false brands only */}
+          <div className="hidden md:grid grid-cols-1 gap-8 max-w-6xl mx-auto">
+            {brands.filter(b => !b.isMobile).map((brand) => (
+              <BrandCard key={brand.id} brand={brand} gclid={gclid} />
             ))}
           </div>
         </div>

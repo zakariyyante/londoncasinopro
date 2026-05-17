@@ -11,7 +11,8 @@ interface MobileModalProps {
 }
 
 export const MobileModal: React.FC<MobileModalProps> = ({ brands, gclid }) => {
-  const [isOpen, setIsOpen] = useState(!!(gclid && brands.length > 0));
+  const isMobileViewport = typeof window !== 'undefined' && window.innerWidth < 768;
+  const [isOpen, setIsOpen] = useState(!!(gclid && brands.length > 0 && isMobileViewport));
 
   useEffect(() => {
     if (isOpen) {

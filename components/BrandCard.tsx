@@ -1,9 +1,11 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Brand } from '@/app/data/brands';
 import { track } from '@vercel/analytics';
+
+const GCLID_KEY = 'lcp_gclid';
 
 interface BrandCardProps {
   brand: Brand;
@@ -25,10 +27,23 @@ declare global {
   }
 }
 
-export const BrandCard: React.FC<BrandCardProps> = ({ brand, gclid }) => {
+export const BrandCard: React.FC<BrandCardProps> = ({ brand, gclid: gclidProp }) => {
+  const [gclid, setGclid] = useState<string | null>(gclidProp ?? null);
+
+  useEffect(() => {
+    if (gclidProp) {
+      sessionStorage.setItem(GCLID_KEY, gclidProp);
+      setGclid(gclidProp);
+    } else {
+      const stored = sessionStorage.getItem(GCLID_KEY);
+      if (stored) setGclid(stored);
+    }
+  }, [gclidProp]);
+
   const finalUrl = buildUrl(brand.url, gclid);
 
-  const handleCardClick = () => {
+  const handleCardClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
     track('Brand Click', { brand: brand.name });
     if (typeof window !== 'undefined' && window.gtag_report_conversion) {
       window.gtag_report_conversion();
@@ -37,9 +52,10 @@ export const BrandCard: React.FC<BrandCardProps> = ({ brand, gclid }) => {
   };
 
   return (
-    <div 
+    <a
+      href={brand.displayUrl}
       onClick={handleCardClick}
-      className="bg-[#0D1433] neo-border border-[#5B18E8] neo-shadow-purple relative group flex flex-col md:flex-row transition-all hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0_#5B18E8] cursor-pointer"
+      className="bg-[#0D1433] neo-border border-[#5B18E8] neo-shadow-purple relative group flex flex-col md:flex-row transition-all hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0_#5B18E8] cursor-pointer no-underline"
     >
       {/* Left Accent Bar (Desktop) / Top (Mobile) */}
       <div className="w-full h-1 md:w-2 md:h-auto bg-[#D8A326] shrink-0" />
@@ -119,6 +135,6 @@ export const BrandCard: React.FC<BrandCardProps> = ({ brand, gclid }) => {
           </p>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
