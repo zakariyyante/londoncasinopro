@@ -31,6 +31,6 @@ export const brands: Brand[] = [
     url: "https://media1.casimbaaff.com/redirect.aspx?pid=48778&lpid=213&bid=1617&subid=Spinland-ST&clickid=",
     isMobile: true,
     votes: 1126,
-    badge: "FAST WITHDRAWAL",
+    badge: "RUNNER UP",
   },
 ];
