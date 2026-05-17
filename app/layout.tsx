@@ -26,7 +26,7 @@ export default function RootLayout({
       <head>
         {/* Google Tag (gtag.js) */}
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX`}
+          src={`https://www.googletagmanager.com/gtag/js?id=AW-18144075262`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -34,7 +34,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX');
+            gtag('config', 'AW-18144075262');
           `}
         </Script>
         <Script id="google-conversion" strategy="afterInteractive">
@@ -46,7 +46,7 @@ export default function RootLayout({
                 }
               };
               gtag('event', 'conversion', {
-                  'send_to': 'AW-XXXXXXXXXX/YYYYYYYYYYYY',
+                  'send_to': 'AW-18144075262/conversion',
                   'event_callback': callback
               });
               return false;
