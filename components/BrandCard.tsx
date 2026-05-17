@@ -70,7 +70,6 @@ export const BrandCard: React.FC<BrandCardProps> = ({ brand, gclid: gclidProp })
         {/* Logo & Rating Section */}
         <div className="flex flex-row md:flex-col items-center justify-between md:justify-center gap-4 shrink-0 w-full md:w-56">
           <div className="relative w-24 h-20 md:w-44 md:h-32 bg-white/5 neo-border border-white/10 p-1 md:p-3 flex items-center justify-center group-hover:neo-shadow-sm transition-all overflow-hidden">
-            <div className="text-3xl md:text-5xl grayscale group-hover:grayscale-0 transition-all opacity-20">🎰</div>
             <Image 
               src={brand.logo} 
               alt={brand.name} 
