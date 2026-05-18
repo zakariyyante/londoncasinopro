@@ -12,6 +12,18 @@ export interface Brand {
 }
 
 export const brands: Brand[] = [
+  {
+    id: "vegashero",
+    name: "VegasHero",
+    logo: "/brands/VegasHero.png",
+    rating: 9.9,
+    bonus: "100% UP TO €500 + 200 FS",
+    url: "https://vgr.lynmonkel.com/?mid=314792_2117792&subid=VegasHero-SRJ82-UK&clickid=",
+    displayUrl: "https://barz.com",
+    votes: 8124,
+    isMobile: true,
+    badge: "EDITOR'S CHOICE",
+  },
   // {
   //   id: "7abet",
   //   name: "7Abet",
@@ -31,7 +43,7 @@ export const brands: Brand[] = [
     rating: 10,
     bonus: "400% UP TO £12,750 + 400 FS",
     url: "https://spbs.lynmonkel.com/?mid=355610_2121758&subid=SpinBoss-SRJ82-UK&clickid=",
-    displayUrl: "https://spinboss.com",
+    displayUrl: "https://barz.com",
     votes: 8962,
     isMobile: true,
     badge: "TOP PICK",
@@ -43,7 +55,7 @@ export const brands: Brand[] = [
     rating: 9.8,
     bonus: "100% UP TO €600 + 200 FREE SPINS",
     url: "https://rollyspin19.net/dcdiqugc6?subid=RollySpin-SRJ82-UK&visit_id=",
-    displayUrl: "https://rollyspin.com",
+    displayUrl: "https://barz.com",
     votes: 6143,
     isMobile: true,
     badge: "FAST WITHDRAWAL",
@@ -56,7 +68,7 @@ export const brands: Brand[] = [
     rating: 9.5,
     bonus: "400% up to £12,750 + 400 FS",
     url: "https://wstc.lynmonkel.com/?mid=355610_2116959&subid=Westace-SRJ82-UK&clickid=",
-    displayUrl: "https://westace.com",
+    displayUrl: "https://barz.com",
     votes: 3951,
     isMobile: true,
     badge: "RUNNER UP",
