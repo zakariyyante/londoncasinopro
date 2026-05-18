@@ -25,6 +25,18 @@ export const brands: Brand[] = [
   //   badge: "EXPERT CHOICE",
   // },
   {
+    id: "spinboss",
+    name: "SpinBoss",
+    logo: "/brands/spinboss.webp",
+    rating: 10,
+    bonus: "400% UP TO £12,750 + 400 FS",
+    url: "https://spbs.lynmonkel.com/?mid=355610_2121758&subid=SpinBoss-SRJ82-UK&clickid=",
+    displayUrl: "https://spinboss.com",
+    votes: 8962,
+    isMobile: true,
+    badge: "TOP PICK",
+  },
+  {
     id: "rollyspin",
     name: "RollySpin",
     logo: "/brands/rolly.svg",
@@ -36,18 +48,7 @@ export const brands: Brand[] = [
     isMobile: true,
     badge: "FAST WITHDRAWAL",
   },
-  {
-    id: "spinboss",
-    name: "SpinBoss",
-    logo: "/brands/spinboss.webp",
-    rating: 9.7,
-    bonus: "400% UP TO £12,750 + 400 FS",
-    url: "https://spbs.lynmonkel.com/?mid=355610_2121758&subid=SpinBoss-SRJ82-UK&clickid=",
-    displayUrl: "https://spinboss.com",
-    votes: 5962,
-    isMobile: true,
-    badge: "TOP PICK",
-  },
+  
   {
     id: "westace",
     name: "WestAce",
